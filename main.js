@@ -40,6 +40,7 @@ document.getElementById('inp2').value=0;
 function clearc(){
     document.getElementById('inp2').value=0;
     document.getElementById('inp1').value="";
+    document.getElementById('inp3').innerHTML = "";
 }
 
 function plmn(){
