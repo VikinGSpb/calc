@@ -126,9 +126,15 @@ function dev(){
         document.getElementById('inp3').innerHTML='/';
         document.getElementById('inp2').value=0;
     } else {
+        if(document.getElementById('inp2').value==0){
+            document.getElementById('inp1').value += "/0" ;
+            document.getElementById('inp2').value = "Недопустимо";
+            document.getElementById('inp3').innerHTML = "";
+        } else {
             document.getElementById('inp2').value = document.getElementById('inp1').value / document.getElementById('inp2').value;
             document.getElementById('inp1').value = "";
             document.getElementById('inp3').innerHTML = "";
+        }
     }
 }
 
@@ -138,10 +144,21 @@ function equal(){
             case '+': document.getElementById('inp2').value = +document.getElementById('inp1').value + +document.getElementById('inp2').value; break;
             case '-': document.getElementById('inp2').value = document.getElementById('inp1').value - document.getElementById('inp2').value; break;
             case '*': document.getElementById('inp2').value = document.getElementById('inp1').value * document.getElementById('inp2').value; break;
-            case '/': document.getElementById('inp2').value = document.getElementById('inp1').value / document.getElementById('inp2').value; break;
+            case '/': 
+                if(document.getElementById('inp2').value==0){
+                    document.getElementById('inp1').value += "/0" ;
+                    document.getElementById('inp2').value = "Недопустимо";
+                    document.getElementById('inp3').innerHTML = "";
+                    break;
+                } else {
+                    document.getElementById('inp2').value = document.getElementById('inp1').value / document.getElementById('inp2').value; 
+                    break;
+                }
         }
     }
-    document.getElementById('inp1').value="";
+    if (document.getElementById('inp2').value != "Недопустимо") {
+        document.getElementById('inp1').value="";
+    }
     document.getElementById('inp3').innerHTML = "";
 }
 
